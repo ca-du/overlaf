@@ -1,0 +1,695 @@
+%% abtex2-modelo-trabalho-academico.tex, v-1.9.5 laurocesar
+%% Copyright 2012-2015 by abnTeX2 group at http://www.abntex.net.br/ 
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on 
+%% http://www.abntex.net.br/
+%%
+%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com 
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em verso e anverso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	%chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+% ---
+% Pacotes básicos 
+% ---
+\usepackage{lmodern}			% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% ---
+		
+% ---
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% ---
+\usepackage{lipsum}				% para geração de dummy text
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+% --- 
+% CONFIGURAÇÕES DE PACOTES
+% --- 
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Quest Concept Canvas: Um modelo de criação de quests para jogos educacionais digitais}
+\autor{Erick Bergamini da Silva Lima}
+\local{Brasil}
+\data{2017}
+\orientador{Charles Andrye Galvao Madeira}
+%\coorientador{Equipe \abnTeX}
+\instituicao{%
+  Universidade Federal do Rio Grande do Norte -- UFRN
+  \par
+  Instituto Metrópole Digital -- IMD
+  \par
+  Programa de Pós-Graduação em Engenharia de Software}
+\tipotrabalho{Dissertação (Mestrado)}
+% O preambulo deve conter o tipo do trabalho, o objetivo, 
+% o nome da instituição e a área de concentração 
+\preambulo{Dissertação de Mestrado  apresentada ao Programa de Pós-graduação em Engenharia de Software da Universidade Federal do Rio Grande do Norte como requisito parcial para a obtenção do grau de Mestre em Engenharia de Software.}
+% ---
+
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% --- 
+% Espaçamentos entre linhas e parágrafos 
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Seleciona o idioma do documento (conforme pacotes do babel)
+%\selectlanguage{english}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência. 
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+
+\begin{fichacatalografica}
+	\sffamily
+	\vspace*{\fill}					% Posição vertical
+	\begin{center}					% Minipage Centralizado
+	\fbox{\begin{minipage}[c][8cm]{13.5cm}		% Largura
+	\small
+	\imprimirautor
+	%Sobrenome, Nome do autor
+	
+	\hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+	\imprimirlocal, \imprimirdata-
+	
+	\hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+	
+	\hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+	
+	\hspace{0.5cm}
+	\parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+	\imprimirdata.}\\
+	
+	\hspace{0.5cm}
+		1.Canvas.
+		2. Jogos educacionais.
+		3. Massive Multiplayer Online.
+        4. Produção.
+        5. Quest.
+		I. Charles Madeira.
+		II. Universidade Federal do Rio Grande do Norte.
+		III. Instituto Metópole Digital.
+		IV. Quest Concept Canvas. 			
+	\end{minipage}}
+	\end{center}
+\end{fichacatalografica}
+% ---
+
+% ---
+% Inserir errata
+% ---
+%\begin{errata}
+%Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
+
+%\vspace{\onelineskip}
+
+%FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
+%reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
+%rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
+%cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
+%Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+%/
+%\begin{table}[htb]
+%\center
+%\footnotesize
+%\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
+ % \hline
+  % \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
+   % \hline
+    %1 & 10 & auto-conclavo & autoconclavo\\
+   %\hline
+%\end{tabular}
+%\end{table}
+
+%\end{errata}
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+    
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+   \end{center}
+        
+   %Trabalho aprovado. \imprimirlocal, 24 de novembro de 2012:
+
+   \assinatura{\textbf{\imprimirorientador} \\ Orientador} 
+   \assinatura{\textbf{Professor} \\ Convidado 1}
+   \assinatura{\textbf{Professor} \\ Convidado 2}
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+      
+   \begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+  
+\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{ Este trabalho é dedicado às crianças adultas que,\\
+   quando pequenas, sonharam em se tornar cientistas.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos
+% ---
+\begin{agradecimentos}
+Os agradecimentos principais são direcionados à Fulano\footnote{Sobre Fulano, \url{http://}} e todos aqueles que
+contribuíram para que a produção deste trabalho acadêmico.
+
+Agradecimentos especiais são direcionados ao ...\emph{outras pessoas}
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+	\begin{flushright}
+		\textit{``Não vos amoldeis às estruturas deste mundo, \\
+		mas transformai-vos pela renovação da mente, \\
+		a fim de distinguir qual é a vontade de Deus: \\
+		o que é bom, o que Lhe é agradável, o que é perfeito.\\
+		(Bíblia Sagrada, Romanos 12, 2)}
+	\end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+\begin{resumo}
+%\citeonline[3.1-3.2]{NBR6028:2003
+Aqui se insere o resumo deste trabalho
+
+ \textbf{Palavras-chave}: Canvas. Jogos educacionais. Massive Mutiplayer Online Game. Produção. Quest.
+\end{resumo}
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   This is the english abstract.
+
+   \vspace{\onelineskip}
+ 
+   \noindent 
+   \textbf{Keywords}: latex. abntex. text editoration.
+ \end{otherlanguage*}
+\end{resumo}
+
+% ---
+% inserir lista de ilustrações
+% ---
+
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+\begin{siglas}
+  \item[MMO] Massive Multiplayer Online
+  \item[RPG] RolerPlay Game
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+% \begin{simbolos}
+% %   \item[$ \Gamma $] Letra grega Gama
+%   \item[$ \Lambda $] Lambda
+%   \item[$ \zeta $] Letra grega minúscula zeta
+%   \item[$ \in $] Pertence
+% \end{simbolos}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+% ----------------------------------------------------------
+% Introdução (exemplo de capítulo sem numeração, mas presente no Sumário)
+% ----------------------------------------------------------
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+% ----------------------------------------------------------
+A escola tem um papel fundamental na nossa sociedade, sendo responsável pela transmissão dos conhecimentos necessários para a formação cidadã e científica das pessoas por todas as fases de sua vida. Mesmo assim, há questões e problemas na qualidade de ensino há muito debatidos, e grande parte deles estão relacionados principalmente aos alunos mais jovens, pois têm mostrado constantemente desinteresse pelos conteúdos apresentados e ministrados em sala de aula.
+Alguns autores como ZILLE\footnote{ZILLE, José Antônio Baêta. Indicadores e geradores de possibilidades educacionais, 2011.} defendem que, aparentemente, a forma de como o conteúdo está sendo oferecido e apresentado na escola não vem satisfazendo a demanda desses jovens, principalmente no que diz respeito a maneira de como este conhecimento está sendo disponibilizado. Zille ainda afirma que o universo em que os adolescentes estão inseridos no dia a dia está em dissonância com a escola, o que ratifica o descompasso dos interesses dos alunos. Dentro deste universo estão os jogos digitais.
+
+Nas últimas décadas houve um aumento substancial da quantidade de pessoas que está imersa no mundo dos jogos digitais, sendo a maioria jovens em ambiente escolar, que inclusive tendem a balancear o tempo entre os jogos e os estudos. Portanto, trazer os traços positivos dos jogos, como o engajamento e a imersão, para o ambiente de ensino é algo que mistura o útil ao agradável. O ser humano sempre foi fascinado por jogos. Desde seus primórdios, a humanidade tem criado jogos para seu entretenimento, pois são divertidos e uma ótima maneira de passar o tempo. Hoje em dia as coisas não são tão diferentes assim. Tendo em vista o impacto dos jogos na sociedade atual, não seria absurdo utilizar de vários de seus mecanismos para resolver problemas encontrados nas mais diversas áreas, inclusive para suprir algumas dificuldades no âmbito de ensino.
+    
+Piaget\footnote{PIAGET, J. A formação do símbolo na criança: imitação, jogo e sonho, imagem e representação, 1971.} enfatiza que "o jogo da imaginação constitui, com efeito, uma transposição simbólica que sujeita as coisas à atividade do indivíduo, sem regras nem limitações. Logo, é assimilação quase pura, quer dizer, pensamento orientado pela preocupação dominante da satisfação individual.". Portanto, o ato de jogar em um universo imaginário com suas próprias regras e cenários específicos, que diferem dos cenários comuns em que o jovem está inserido, supre o desejo libertário gerando um prazer funcional ligado a esse exercício, mesmo que este cenário fictício imite o cenário real. Dessa forma, ainda de acordo com Piaget, "o jogo adota regras ou adapta cada vez mais a imaginação simbólica aos dados da realidade, sob a forma de construções ainda espontâneas, mas imitando o real.". Sendo assim, o jogo possibilita um desequilíbrio entre a assimilação e a acomodação, gerando o aprendizado em um processo adaptativo ao novo, onde os mecanismos de compensação passam a atuar para gerar um equilíbrio gerando novos conhecimentos. Desta forma, a utilização de jogos na aprendizagem é válida e pode ser percebido na vasta gama cada vez mais crescente de artigos e estudos relacionados a esta prática. 
+
+De acordo com Balasubramanian\footnote{BALASUBRAMANIAN, Nathan. Wilson, Brent. Games and simulations, 2008.}, quando bem desenvolvidos, sistemas de jogos e simulação podem facilitar o aprendizado dos alunos tanto dos conceitos quanto das áreas de conhecimento, além de melhorar o desenvolvimento de várias habilidades cognitivas como reconhecimento de padrões, tomada de decisão e solução de problemas. Dessa forma, o jogo educacional serve como ferramenta para o auxílio no aprendizado do aluno, com o intuito de estimular suas habilidades cognitivas, explorando as sensações simuladas para poder transmitir ao aluno o conteúdo desejado. Porém, nem todo jogo pode ser considerado educacional, pois, de acordo com Prieto\footnote{PRIETO, Lilian Medianeira. et al. Uso das tecnologias digitais em atividades didáticas nas séries iniciais, 2005}, "softwares educacionais são programas que visam atender necessidades vinculadas à aprendizagem". Ainda de acordo com Prieto, para ser um jogo educacional, estes softwares "devem possuir objetivos pedagógicos e sua utilização deve estar inserida em um contexto e em uma situação de ensino baseados em uma metodologia que oriente o processo, através da interação, da motivação e da descoberta, facilitando a aprendizagem de um conteúdo." Sendo assim, um jogo digital educacional é uma simulação computacional de uma realidade, com suas próprias regras e cenários definidos, de maneira que o jogador simule situações em que a interação resulte na experiência de novas descobertas, motivando os alunos a sentir estímulos diferentes com objetivos pedagógicos, orientando-os em um processo que facilitará a aprendizagem de um conteúdo a ser transmitido.
+Autores como CHOU (2013) destacam que ao longo das últimas quatro décadas, os cérebros mais notáveis da indústria de jogos estiveram ocupados em compreender como motivar e engajar pessoas sob a ótica da análise do comportamento humano. Portanto, os jogos digitais podem ser utilizados para motivar pessoas a mudar seus comportamentos com intuito de atingir objetivos no mundo real, aumentando o engajamento com uma abordagem alternativa. Normalmente, estes estímulos são aplicada em pessoas que necessitam de um motivador para realizar certas tarefas que propõem benefícios e finanças pessoais, saúde, bem-estar e sustentabilidade. Portanto, é valoroso se utilizar de conceitos de game design para trazer a experiência que os jogos proporcionam, utilizando suas estruturas para propiciar um engajamento do aluno a aprender de maneira mais espontânea. Portanto,  jogos digitais educacionais tem por desígnio entreter e ensinar novos conhecimentos, ou então aprimorar aqueles já descobertos. 
+
+Mesmo assim, produzir jogos digitais educacionais não é tão simples como parece, pois muito mais do que apenas ensinar, os jogos devem ser divertidos para serem eficientes, do contrário se tornariam enfadonhos ou até mais desencorajadores do que as aulas e exercícios comumente propostos pelos professores. Muitos projetos deixam de cumprir este requisito principalmente devido a forma de como são produzidos, tratando os jogos como softwares comuns e deixando de lado alguns aspectos relacionados à diversão e à didática.
+
+[vincular a ideia acima ao objetivo citado.]
+
+Finalmente, o objetivo desta pesquisa é criar uma metodologia chamada \emph{Quest Concept Design} para auxiliar o processo de criação de \emph{quests}, ou missões, para jogos educacionais Multijogador Massivo Online, para que o jogo criado atenda melhor as  expectativas e requisitos educacionais e lúdicos, além de adaptar melhor no jogo o conteúdo a ser transmitido para o aluno. 
+
+
+
+
+
+  %Modelos: \textsf{código},  \emph{texto com ênfase}, \url{http://...}, e \footnote{Rodapé} 
+ 
+
+% --------------------------------------------------------------------------------------------------------
+% PARTE
+% ----------------------------------------------------------
+\part{Preparação da pesquisa}
+% ----------------------------------------------------------
+
+% ---
+% Capitulo com exemplos de comandos inseridos de arquivo externo 
+% ---
+\chapter{Referencial teórico}\label{cap_exemplos}
+
+% \chapterprecis{Isto é uma sinopse de capítulo. A ABNT não traz nenhuma normatização a respeito desse tipo de resumo, que é mais comum em romances  e livros técnicos.}\index{sinopse de capítulo}
+
+
+\section{O que é RPG?}
+O termo \emph{role-playing game}, ou RPG, surgiu com a criação do jogo Dungeons \& Dragons em 1974. Neste tipo de jogo, os jogadores imaginam uma história contada por um narrador neutro, que descreve os cenários onde se passa e interpreta todos os personagens não jogadores ou NPC \footnote{do inglês \emph{non-player character}.}que fazem parte do enredo desta história. Os jogadores controlam e interpretam um personagem cada, determinando suas ações apenas informando ao narrador o que deseja que seu personagem faça. O narrador então irá  definir os resultados de acordo com regras e lances de dados, que indicará o sucesso ou fracasso das tentativas de concluir esta ação. No desenvolvimento da história, existem missões a serem cumpridas, tarefas a serem executadas, itens a serem conseguidos, inimigos a serem derrotados e, por fim, os jogadores completam a busca e ganham experiência para poder evoluir seus personagens e tesouros para comprar outros itens que melhorem seu desempenho no jogo. Normalmente, um jogo de RPG dentro de um cenário e com uma linha narrativa determinada que perdura por várias sessões é denominado de campanha. Deste jogo surgiram alguns conceitos que foram posteriormente bastante utilizados em jogos digitais, como evolução por experiência, compra de itens, categoria de armadura, poder de ataque, regras de combate em turnos, atributos que definem características físicas, mentais e sociais, dentre vários outros conceitos.
+
+[falar sobne RPG Eduicacional]
+
+
+\section{Cenário atual} 
+Qual o cenário geral da produção de jogos educacionais?
+% ---
+\subsection{Mercado de jogos}
+% ---
+
+Explicando como é o mercado de jogos digitais em geral.
+
+% ---
+\subsection{Jogo de RPG Massivo Multijogador Online}
+% ---
+
+% ------------------------------------------------------------------------------------------------------
+% PARTE
+% ----------------------------------------------------------
+\part{Problemática}
+% ----------------------------------------------------------
+
+\chapter{Produção de jogos educacionais}
+
+O processo de criação de jogos educacionais normalmente é feito com o professor que decide criar um artefato diferenciado para melhorar e dinamizar o aprendizado dos seus alunos. Porém, nem sempre ele sabe como fazer ou tem conhecimento adequado ou incentivo para isso. Algumas vezes ele pode se valer de bolsistas e de projetos em que são desenvolvidos os jogos que possam atender a sua disciplina, mas quase nunca estes jogos conseguem abranger o conteúdo desejado ou então se aproximar fidedignamente do conteúdo desejado inicialmente pelo professor. Isso se deve pela inaptidão do diálogo ou da falta de ferramentas que facilitem esse processo, ou então por falta de técnicas de conhecimento acerca do processo.
+
+\section{Problemas relacionados}
+
+Quais os problemas existentes na produção de jogos educacionais digitais?
+
+\section{Hipóteses levantadas}
+
+Como estes problemas poderiam ser resolvidos? (Hipóteses)
+
+
+
+
+% -----------------------------------------------------------------------------------------------------
+% PARTE
+% ----------------------------------------------------------
+\part{Proposta de metodologia}
+% ----------------------------------------------------------
+
+
+
+
+\chapter{Processo de produção exstentes}
+%----------------------------------------
+
+Texto de introdução...
+
+
+\section{Modelos de negócio e de projetos baseados em Canvas}
+
+
+Falar sobre Modelos de negócio e de Projetos.
+
+
+\section{Processo de produção de Jogos Digitais}
+
+ERJED, DESIGN THINKING, Game Concept Canvas, ORIGame...
+
+\section{Preparação de sessões de RPG de Mesa}
+
+Os jogos de RPG convencionais\footnote{muitas vezes citados como "de mesa" ou, em inglês, \emph{Pen and Paper}.} normalmente são preparados antes de uma sessão de jogo. O narrador então organiza a trama para evitar que o desenrolar da história possua pontas soltas e inconsistências narrativas. Mas realizar esta tarefa não é tão simples como parece. Normalmente, os narradores constroem seus próprios sistemas de preparação, definindo eles mesmos como produzir a história, organizar suas anotações e como preparar os elementos que serão utilizados no jogo. Neste universo, Phil Vecchione\footnote{VECCHIONE, phil. Despreparado? Nunca!. Pensamento Coletivo, 2015} tentou organizar o processo criativo destas seções propondo uma metodologia em que são definidas fases de preparação dentro de um ciclo criativo. Como muitas vezes os jogos de RPG são bem dinâmicos, o autor define que as anotações do narrador não devem ser muito extensas, de maneira que ele deve estar livre para criar na hora da sua imaginação as situações menos importantes que ocorrem no jogo. Os grandes pontos da história, como reviravoltas, enredo principal e desfecho final devem estar anotados para ser utilizado como referência rápida. Então, para este sistema, escrever demasiadamente todo o enredo detalhadamente não é uma tarefa recomendada. Basicamente, VECCHIONE sugere um ciclo com fases de Brainstorm, Seleção de ideias, Conceitualização, Documentação e Revisão. Na fase de Brainstorm, o narrador tenta capitar o máximo de ideias que ele conseguir de maneira bruta e pouco refinada, podendo este exercício acontecer em qualquer lugar de qualquer forma funcional. Em seguida, estas ideias devem ser selecionadas e refinadas para tentar organizá-las e adaptá-las ao cenário e ao enredo principal da campanha. Outro fator importante que deve ser levado em consideração é determinar quais tipos de jogadores estão participando, para tentar adaptar as \emph{quests} ao estilo de jogo mais agradável a ele.
+
+[incompleto]
+
+
+Como se dá o processo de produção de jogos digitais estilo MMORPG?
+[explicar como será utilizado na metodologia]
+
+
+\chapter{Metodologia Quest Concept Canvas}
+%----------------------------------------
+
+Qual a proposta de processo? (O que é o Quest Concept Design?) Modelo gráfico, associações, tarefas possíveis, etc.
+
+\section{Construtivismo e as Multiplas Inteligencias}
+O que é construtivismo, como pode ser relacionadas com as multiplas inteligências e como serão utilizadas na produção de tarefas e quests dentro da proposta de metodologia? Associação das tarefas possíveis äs multiplas inteligências: Utilizar livro do professor de geografica como exemplo.
+
+\section{Fases de produção}
+Demonstra como será executado o processo de produção, passo a passo, desde o brainstorm como no Design Thinking até a inserção das ideias no modelo de canvas.
+
+\section{Prototipação e Testes}
+
+testar a proposta de quest em um jogo de RPG de mesa gravado, utilizando o sistema de regras do jogo digital ou qualquer sistema de RPG de mesa simples e genérico que se encaixe no cenário. Este processo poderia definir os diálogos, eventos menores, peculiaridades dos ambientes e da trama, além de determinar quais ideias funcionaram e quais não. Isto poderia ser uma fase de validação da quest (fase de teste e prototipação).
+
+\section{Organização das quests dentro do cenário total}
+
+Explicar como as quests interagem entre si e como isso pode ser um problema para controle mental futuro, em seguida explicando que isso pode ser resolvido com o uso de mapas mentais para controlar o fluxo das quests.
+
+\subsection{Uso de Mapas mentais}
+
+Quando se trabalha com uma grande quantidade de informações interligadas que seguem um fluxo lógico, fica difícil manter o controle mental do todo se não houver algum mecanismo que facilite este processo e um dos dispositivos utilizados com este intuito é o Mapa mental. De acordo com BUZAN \footnote{BUZAN, Tony. Mapas mentais e sua elaboração. Editora Cultrix, 2005.} Mapas mentais são sistemas que auxiliam na recuperação de informações, ajudando a aprender, organizar e armazenar grandes quantidades de dados, classificando-os de maneira natural e concedendo-lhes acesso fácil e instantâneo. Um dos recursos deste modelo é o fato de que toda informação inserida neste modelo deve ser "enganchada" com outras informações já existentes, criando várias ligações com outras informações já cadastradas no mapa, gerando uma rede de dados interligados entre si deixando claro seus relacionamentos com outras informações, determinando sua posição mental dentro de todo o conceito geral. Dessa forma, quanto mais ligações um dado possuir, mais fácil será captar a informação necessária. Portanto, quando mais rico for o mapa, mais fácil será determinar quais as linhas de conhecimento que podem ser explorados e quais os "caminhos" devem ser trilhados para se alcançar um objetivo específico.
+
+[Definir mais detalhadamente como o mapa mental será especificamente utilizado na metodologia proposta.]
+
+\section{Justificativa da proposta}
+Qual a importância deste trabalho? (Tarefa-estímulo: Área pouco trabalhada e modelo Inovador).
+Porque é melhor utilizar este trabalho do que outras metodologias existentes?
+
+
+
+% % ----------------------------------------------------------
+% % PARTE
+% % ----------------------------------------------------------
+% \part{Resultados esperados}
+% % ----------------------------------------------------------
+
+
+% % ---
+% % primeiro capitulo de Resultados
+% % ---
+% \chapter{Aplicação da metodologia em um projeto real}
+% % ---
+
+% % ---
+% \section{Aplicação da metodologia para produção do UFRN - The video-game}
+
+% Texto explicando como a metodologia foi aplicada ao UFRN - The video-game
+% % ---
+
+
+% % ---
+% \section{Resultados obtidos com o experimento}
+
+% Texto explicando como a metodologia se comportou durante o processo de criação de quests e como ela foi aceita
+% pelos professores e produtores do jogo.
+
+% % ---
+
+
+% ----------------------------------------------------------
+% Finaliza a parte no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ----------------------------------------------------------
+\phantompart
+
+% ---
+% Conclusão
+% ---
+\chapter{Conclusão}
+% ---
+
+Capítulo onde será demonstrado os resultados obtidos com a aplicação da metodologia, além de descrição dos relatos dos desenvolvedores e professores.
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{abntex2-modelo-references}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% % ---
+% % Inicia os apêndices
+% % ---
+% \begin{apendicesenv}
+
+% % Imprime uma página indicando o início dos apêndices
+% \partapendices
+
+% % ----------------------------------------------------------
+% \chapter{apendice1}
+
+
+% texto do apendice 1
+% % ----------------------------------------------------------
+
+% \end{apendicesenv}
+% % ---
+
+
+% % ----------------------------------------------------------
+% % Anexos
+% % ----------------------------------------------------------
+
+% % ---
+% % Inicia os anexos
+% % ---
+% \begin{anexosenv}
+
+% % Imprime uma página indicando o início dos anexos
+% \partanexos
+
+% % -------------------------------
+% \chapter{Anexo1}
+
+% insira o conteúdo do anexo aqui
+% % -------------------------------
+
+
+% % ---
+% \end{anexosenv}
+
+% %---------------------------------------------------------------------
+% % INDICE REMISSIVO
+% %---------------------------------------------------------------------
+% \phantompart
+% \printindex
+% %---------------------------------------------------------------------
+
+\end{document}
